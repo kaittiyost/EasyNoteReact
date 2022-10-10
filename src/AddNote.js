@@ -8,7 +8,7 @@ import { Form, Button, Container, FloatingLabel } from "react-bootstrap";
 const AddNote = () => {
   const [notes, setNote] = useState({});
   const navigate = useNavigate();
-
+  let tag_arr="";
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -16,10 +16,13 @@ const AddNote = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(notes.title);
-    console.log(notes.detail);
-    let tag_arr = notes.tag.split(" ");
-    console.log(tag_arr);
+    // console.log(notes.title);
+    // console.log(notes.detail);
+    try {
+        tag_arr = notes.tag.split(" ");
+    } catch (error) {
+        //navigate('/Login')
+    }
     // send API
     var myHeaders = new Headers();
     myHeaders.append(
@@ -48,6 +51,7 @@ const AddNote = () => {
             navigate('/MyNote')
         }else{
             alert('error try again!')
+            navigate('/Login')
         }
       })
       .catch((error) => console.log("error", error));
@@ -55,7 +59,7 @@ const AddNote = () => {
 
   return (
     <Container className="p-5">
-      <Form onSubmit={handleSubmit}>
+      <Form  onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Title</Form.Label>
           <Form.Control
@@ -78,7 +82,8 @@ const AddNote = () => {
             placeholder="#excemple #..."
           />
         </Form.Group>
-        <FloatingLabel controlId="floatingTextarea2" label="Note Here">
+        <br></br>
+        <FloatingLabel controlId="floatingTextarea2" label="Note Here...">
           <Form.Control
             as="textarea"
             placeholder="note here"

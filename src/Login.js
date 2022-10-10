@@ -83,7 +83,7 @@ export const Login = () => {
               <Button variant="primary" type="submit">
                 Login
               </Button>
-              <a href="/Register">register now</a>
+              <a style={{marginLeft:"10px"}} href="/Register">register now</a>
             </Form>
           </Col>
         </Row>
