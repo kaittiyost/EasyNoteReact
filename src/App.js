@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Login from "./Login";
+import Profile from "./Profile";
+import Register from "./Register";
+import NavBar from "./NavBar";
+import MyNote from "./MyNote";
+import Toxic from "./Toxic";
+import AddNote from "./AddNote";
+import Footer from "./Footer";
+import { Routes ,Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+    <NavBar />
+    <Routes>
+      <Route path='/' element={<Login/>} />
+      <Route path='/Login' element={<Login/>} />
+      <Route path='/Profile' element={<Profile/>} />
+      <Route path='/Register' element={<Register/>} />
+      <Route path='/MyNote' element={<MyNote/>} />
+      <Route path='/AddNote' element={<AddNote/>} />
+      <Route path='/Toxic' element={<Toxic/>} />
+    </Routes>
+    <Footer />
+  </div>
   );
 }
 
